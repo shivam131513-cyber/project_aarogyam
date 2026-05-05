@@ -1,0 +1,21 @@
+{
+  "name": "aarogyam-organ-allocation-system",
+  "version": "1.0.0",
+  "description": "AI-Powered Fair Organ Allocation System for India",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && nodemon index.js",
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install",
+    "start": "cd server && node index.js"
+  },
+  "keywords": ["aarogyam", "organ-allocation", "healthcare", "ai", "fairness", "india"],
+  "author": "Aarogyam Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.2"
+  }
+}

@@ -1,0 +1,535 @@
+/* Transparency Dashboard Simple Styles */
+.transparency-dashboard {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Loading States */
+.loading-container, .error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 2rem;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #e1e5e9;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 2rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.retry-btn {
+  padding: 0.75rem 1.5rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  transition: background 0.3s ease;
+}
+
+.retry-btn:hover {
+  background: #5a6fd8;
+}
+
+/* Header */
+.dashboard-header {
+  background: white;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header-content h1 {
+  color: #333;
+  margin: 0 0 0.5rem 0;
+  font-size: 2.5rem;
+}
+
+.header-content p {
+  color: #666;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-login-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.3s ease;
+}
+
+.admin-login-btn:hover {
+  transform: translateY(-2px);
+}
+
+.connection-status {
+  position: relative;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.status-indicator.online {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-indicator.offline {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.status-tooltip {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #333;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.status-indicator:hover .status-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(5px);
+}
+
+.last-updated {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Admin Access Info */
+.admin-access-info {
+  background: #e8f5e8;
+  border: 2px solid #4CAF50;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 2rem;
+}
+
+.admin-access-info h3 {
+  color: #2e7d32;
+  margin: 0 0 1rem 0;
+}
+
+.credentials-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.credential-item {
+  background: white;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #4CAF50;
+}
+
+.credential-item strong {
+  color: #2e7d32;
+}
+
+.credential-item code {
+  background: #4CAF50;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-family: monospace;
+  margin-left: 0.5rem;
+}
+
+/* Navigation Tabs */
+.nav-tabs {
+  display: flex;
+  background: white;
+  margin: 0 2rem;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tab {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #666;
+  transition: all 0.3s ease;
+  border-right: 1px solid #e1e5e9;
+}
+
+.tab:last-child {
+  border-right: none;
+}
+
+.tab:hover {
+  background: #e9ecef;
+}
+
+.tab.active {
+  background: #667eea;
+  color: white;
+}
+
+/* Tab Content */
+.tab-content {
+  background: white;
+  margin: 0 2rem 2rem 2rem;
+  border-radius: 0 0 10px 10px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: white;
+  border: 1px solid #e1e5e9;
+  border-radius: 10px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 50%;
+}
+
+.stat-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.stat-change {
+  font-size: 0.8rem;
+  color: #28a745;
+  font-weight: 600;
+}
+
+/* Organ Allocation */
+.organ-allocation {
+  margin-top: 2rem;
+}
+
+.organ-allocation h3 {
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.organ-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.organ-card {
+  background: #f8f9fa;
+  border: 1px solid #e1e5e9;
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.organ-card h4 {
+  color: #667eea;
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+}
+
+.organ-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.organ-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 5px;
+}
+
+.organ-stat .label {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.organ-stat .value {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Hospitals Content */
+.hospitals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.hospital-region-card {
+  background: #f8f9fa;
+  border: 1px solid #e1e5e9;
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.hospital-region-card h4 {
+  color: #667eea;
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+}
+
+.region-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.region-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 5px;
+}
+
+/* Activity Feed */
+.activity-feed {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid #e1e5e9;
+  transition: background 0.3s ease;
+}
+
+.activity-item:hover {
+  background: #f8f9fa;
+}
+
+.activity-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.activity-content-text {
+  flex: 1;
+}
+
+.activity-message {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.activity-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.activity-score {
+  background: #667eea;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Equity Content */
+.equity-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.equity-section {
+  background: #f8f9fa;
+  border: 1px solid #e1e5e9;
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.equity-section h4 {
+  color: #667eea;
+  margin: 0 0 1rem 0;
+}
+
+.equity-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.equity-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 5px;
+}
+
+.improvement-note {
+  background: #d4edda;
+  color: #155724;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* Footer */
+.dashboard-footer {
+  background: #333;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.footer-content p {
+  margin: 0.5rem 0;
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .nav-tabs {
+    flex-direction: column;
+    margin: 0 1rem;
+  }
+  
+  .tab-content {
+    margin: 0 1rem 1rem 1rem;
+    padding: 1rem;
+  }
+  
+  .admin-access-info {
+    margin: 1rem;
+  }
+  
+  .credentials-display {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .organ-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hospitals-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .equity-sections {
+    grid-template-columns: 1fr;
+  }
+}
