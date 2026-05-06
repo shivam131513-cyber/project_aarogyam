@@ -47,6 +47,8 @@ app.use('/api/allocation', require('./routes/allocation'));
 app.use('/api/transparency', require('./routes/transparency'));
 app.use('/api/government', require('./routes/government'));
 app.use('/api/hospital-portal', require('./routes/hospitalPortal'));
+app.use('/api/notifications', require('./routes/notifications'));
+app.use('/api/analytics', require('./routes/analytics'));
 
 // Health check endpoint
 app.get('/health', (req, res) => {
