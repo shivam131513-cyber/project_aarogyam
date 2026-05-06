@@ -126,6 +126,28 @@ Accessible across India in **15+ languages**:
 
 </td>
 </tr>
+<tr>
+<td width="50%">
+
+### 🌓 Dark/Light Theme
+Fully responsive theme system:
+- 🌙 Beautiful dark mode with deep navy palette
+- ☀️ Clean light mode with modern aesthetics
+- 💾 Persistent preference via localStorage
+- 🖥️ Auto-detects system preference
+
+</td>
+<td width="50%">
+
+### 🔔 Notification & Audit System
+Comprehensive tracking and alerts:
+- 📧 Email notifications via Nodemailer
+- 📱 SMS alerts via Twilio
+- 🔔 In-app notification system
+- 📋 Compliance-grade audit trail logging
+
+</td>
+</tr>
 </table>
 
 ---
@@ -262,32 +284,49 @@ project_aarogyam/
 │       │   ├── 🏥 HospitalPortal.js
 │       │   ├── 💬 Chatbot.js
 │       │   └── 📊 TransparencyDashboard.js
+│       ├── 📂 context/           # React Context providers
+│       │   └── 🌓 ThemeContext.js # Dark/Light theme manager
 │       ├── 📂 pages/             # Page-level components
 │       │   ├── 🏠 LandingPage.js
 │       │   ├── 📋 Dashboard.js
 │       │   ├── 👤 PatientPortal.js
 │       │   └── 📂 auth/          # Auth pages
 │       ├── 📄 App.js             # Root component & routing
-│       └── 🎨 index.css          # Global styles
+│       └── 🎨 index.css          # Global styles with CSS vars
 │
 ├── 📂 server/                    # Node.js Backend
 │   ├── 📂 config/                # Database configuration
 │   ├── 📂 middleware/            # Auth & validation middleware
-│   ├── 📂 models/                # Data models
+│   ├── 📂 models/                # Mongoose data models
+│   │   ├── 👤 Patient.js         # Patient schema
+│   │   ├── 🫀 Organ.js           # Organ with viability tracking
+│   │   ├── 🏥 Hospital.js        # Hospital schema
+│   │   ├── 🔔 Notification.js    # Multi-channel notifications
+│   │   ├── 📋 AuditLog.js        # Compliance audit trail
+│   │   └── 📊 TransparencyModels.js
 │   ├── 📂 routes/                # API route handlers
 │   │   ├── 🔐 auth.js
 │   │   ├── 🏥 hospitalPortal.js
-│   │   ├── 🫀 organs.js
-│   │   ├── 👥 patients.js
+│   │   ├── 🫀 organs.js          # Organ CRUD + stats
+│   │   ├── 👥 patients.js        # Patient CRUD + history
+│   │   ├── 🏛️ hospitals.js       # Hospital search + nearby
+│   │   ├── 🇮🇳 government.js      # ABHA, NOTTO, Ayushman
+│   │   ├── 🔔 notifications.js   # Notification management
+│   │   ├── 📈 analytics.js       # System analytics
 │   │   └── 📊 transparency.js
 │   ├── 📂 services/              # Business logic services
 │   │   ├── 🧠 allocationEngine.js
 │   │   ├── 👁️ computerVision.js
 │   │   ├── 🏷️ rfidService.js
-│   │   └── 📊 transparencyService.js
+│   │   ├── 📊 transparencyService.js
+│   │   ├── 🔔 notificationService.js # Email/SMS/In-app
+│   │   ├── 📋 auditService.js        # Compliance logging
+│   │   └── 📈 analyticsService.js    # Metrics & trends
 │   └── 📄 index.js               # Server entry point
 │
 ├── 📄 package.json               # Root package configuration
+├── 📄 CONTRIBUTING.md            # Contribution guidelines
+├── 📄 LICENSE                    # MIT License
 └── 📄 README.md                  # You are here! 👈
 ```
 
@@ -345,6 +384,11 @@ project_aarogyam/
 - 🟢 Hospital portal with real-time patient monitoring
 - 🟢 RFID attendance & computer vision integration
 - 🟢 Transparency dashboard with public metrics
+- 🟢 Dark/Light theme with persistent user preference
+- 🟢 Notification service (Email, SMS, In-app)
+- 🟢 Audit trail & compliance logging system
+- 🟢 Analytics service with fairness metrics
+- 🟢 Government API integration (ABHA, NOTTO, Ayushman Bharat)
 - 🟡 Mobile applications (iOS/Android) for doctors
 - 🟡 Advanced ML models for improved detection
 - ⚪ Blockchain audit trail for immutable records
@@ -358,6 +402,12 @@ project_aarogyam/
 ## 🤝 Contributing
 
 We welcome contributions from healthcare professionals, developers, and researchers!
+
+Please read our **[Contributing Guide](CONTRIBUTING.md)** for details on:
+- 📝 Commit message conventions
+- 🌿 Branch naming standards
+- 🔄 Pull request process
+- 🎨 Code style guidelines
 
 ```bash
 # 1. Fork the repository
