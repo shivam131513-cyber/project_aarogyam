@@ -19,9 +19,11 @@ import {
   Favorite
 } from '@mui/icons-material';
 import { motion } from 'framer-motion';
+import { useThemeMode } from '../../context/ThemeContext';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { isDark } = useThemeMode();
 
   const footerSections = [
     {
@@ -73,9 +75,13 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        background: 'linear-gradient(135deg, #1e293b 0%, #334155 100%)',
+        background: isDark
+          ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)'
+          : 'linear-gradient(135deg, #1e293b 0%, #334155 100%)',
         color: 'white',
-        mt: 'auto'
+        mt: 'auto',
+        borderTop: isDark ? '1px solid rgba(148, 163, 184, 0.1)' : 'none',
+        transition: 'background 0.3s ease',
       }}
     >
       <Container maxWidth="lg">
@@ -95,7 +101,9 @@ const Footer = () => {
                   sx={{
                     fontWeight: 700,
                     mb: 2,
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    background: isDark
+                      ? 'linear-gradient(135deg, #818cf8 0%, #a78bfa 100%)'
+                      : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                   }}
@@ -231,10 +239,11 @@ const Footer = () => {
         <Box
           sx={{
             py: 4,
-            background: 'rgba(255, 255, 255, 0.05)',
+            background: isDark ? 'rgba(129, 140, 248, 0.05)' : 'rgba(255, 255, 255, 0.05)',
             borderRadius: 2,
             mb: 4,
-            textAlign: 'center'
+            textAlign: 'center',
+            border: isDark ? '1px solid rgba(129, 140, 248, 0.1)' : 'none',
           }}
         >
           <Typography variant="h6" sx={{ mb: 3, color: 'white' }}>
